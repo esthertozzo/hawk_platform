@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@source "./";
+@source "../components";
+
+@theme {
+  --color-hawk-background: #17191c;
+  --color-hawk-sidebar: #111315;
+  --color-hawk-surface: #1e2223;
+  --color-hawk-card: #24292a;
+
+  --color-hawk-green: #65c141;
+  --color-hawk-orange: #f28c28;
+  --color-hawk-green-dark: #263b2a;
+  --color-hawk-notice: #2a332b;
+
+  --color-hawk-text: #f2f3ed;
+  --color-hawk-muted: #b9c0ba;
+  --color-hawk-border: #343a40;
+
+  --font-hawk: "Poppins", sans-serif;
+}
+
+@layer base {
+  body {
+    background: var(--color-hawk-background);
+    color: var(--color-hawk-text);
+  }
+  button:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-hawk-green);
+    outline-offset: 4px;
+  }
+  input,
+  select,
+  textarea {
+    color-scheme: dark;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-hawk-muted);
+    opacity: 0.65;
+  }
+  select option {
+    background: var(--color-hawk-sidebar);
+    color: var(--color-hawk-text);
+  }
+}
+
+@layer components {
+  .hawk-button {
+    @apply inline-flex items-center justify-center gap-2 bg-hawk-green px-4 py-2.5 text-sm font-semibold text-hawk-sidebar transition-colors hover:bg-hawk-green/85;
+  }
+  .hawk-button-secondary {
+    @apply inline-flex items-center justify-center gap-2 border border-hawk-border bg-hawk-surface px-4 py-2.5 text-sm text-hawk-text transition-colors hover:border-hawk-green;
+  }
+  .hawk-input {
+    @apply w-full min-w-0 border border-hawk-border bg-hawk-sidebar px-3 py-2.5 text-sm text-hawk-text;
+  }
+}
